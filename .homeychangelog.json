@@ -19,5 +19,8 @@
   },
   "1.0.6": {
     "en": "Try and patch token problems"
+  },
+  "1.1.0": {
+    "en": "Improved stability: token refresh is now scheduled based on actual token lifetime instead of fixed intervals, API calls retry automatically with exponential backoff on network failures."
   }
 }
