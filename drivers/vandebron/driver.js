@@ -17,9 +17,9 @@ module.exports = class VandebronDriver extends OAuth2Driver {
    * This should return an array with the data of devices that are available for pairing.
    */
   async onPairListDevices({ oAuth2Client }) {
-    let userId = await oAuth2Client.getUserId();
-    let organizationId = await oAuth2Client.getUserOrganizationId(userId);
-    let greenestMoment = await oAuth2Client.getTodaysGreenestMoment(organizationId);
+    const userId = await oAuth2Client.getUserId();
+    const organizationId = await oAuth2Client.getUserOrganizationId(userId);
+    const greenestMoment = await oAuth2Client.getTodaysGreenestMoment(organizationId);
 
     return [
       {
@@ -28,10 +28,12 @@ module.exports = class VandebronDriver extends OAuth2Driver {
           id: userId,
         },
         store: {
-          userId: userId,
-          organizationId: organizationId,
-          greenestMoment: greenestMoment
-        }
+          userId,
+          organizationId,
+          greenestMoment,
+          username: this.homey.settings.get('username'),
+          password: this.homey.settings.get('password'),
+        },
       },
     ];
   }

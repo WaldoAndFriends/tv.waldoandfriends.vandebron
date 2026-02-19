@@ -3,9 +3,9 @@
 module.exports = {
   async getGreenestMoment({
     homey,
-    query
+    query,
   }) {
-    let devices = homey.drivers.getDriver('vandebron').getDevices();
+    const devices = homey.drivers.getDriver('vandebron').getDevices();
 
     if (devices.length === 0) {
       return 'No device found';
@@ -16,28 +16,27 @@ module.exports = {
 
   async getGreenEnergyPercentage({
     homey,
-    query
+    query,
   }) {
-    let devices = homey.drivers.getDriver('vandebron').getDevices();
+    const devices = homey.drivers.getDriver('vandebron').getDevices();
 
     if (devices.length === 0) {
       return 0;
     }
 
     return devices[0].getCapabilityValue('measure_green_energy');
-
   },
 
   async getGreenestMomentAlarm({
     homey,
-    query
+    query,
   }) {
-    let devices = homey.drivers.getDriver('vandebron').getDevices();
+    const devices = homey.drivers.getDriver('vandebron').getDevices();
 
     if (devices.length === 0) {
       return false;
     }
 
     return devices[0].getCapabilityValue('alarm_greenest_moment');
-  }
+  },
 };
